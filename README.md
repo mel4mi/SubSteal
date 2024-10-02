@@ -47,3 +47,12 @@ python3 --domains example.com --encryption xxd
 ```
 python3 --domains example.com --encryption xxd --mode RANDOM
 ```
+Try on WebHook:
+1. Go [Webhook](https://webhook.site/)
+2. Copy "Your unique DNS name" Url
+3. Run the command:
+ ```
+python3 --domains WebhookDomain --encryption xxd
+```
+
+![Foto]()
