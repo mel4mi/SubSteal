@@ -55,7 +55,13 @@ Try on WebHook:
 python3 --domains WebhookDomain --encryption xxd
 ```
 
+Client Side:
+
 ![Foto](photos/1.png)
+
+Server Side:
+
+![Foto](photos/3.png)
 
 4. Collect data and decrypt
 
