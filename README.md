@@ -36,16 +36,16 @@ Arguments:
 
 Example Usage:
 ```
-python3 --domains example.com example2.com --encryption xxd
+python3 SubSteal.py --domains example.com example2.com --encryption xxd
 ```
 ```
-python3 --domains example.com example2.com --encryption low_bypass
+python3 SubSteal.py --domains example.com example2.com --encryption low_bypass
 ```
 ```
-python3 --domains example.com --encryption xxd
+python3 SubSteal.py --domains example.com --encryption xxd
 ```
 ```
-python3 --domains example.com --encryption xxd --mode RANDOM
+python3 SubSteal.py --domains example.com --encryption xxd --mode RANDOM
 ```
 Try on WebHook:
 1. Go [Webhook](https://webhook.site/)
