@@ -1,5 +1,10 @@
 # SubSteal
 
+<div align="center">
+    <img src="photos/topimage.png" width="350">
+</div>
+
+
 ## Description
 SubSteal is a Python script designed to send data to subdomains using various encryption methods. This script can be used to distribute data across multiple domains and query them using different DNS record types.
 
